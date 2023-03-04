@@ -1,0 +1,20 @@
+{
+  "name": "@cui/icons",
+  "version": "0.1.0",
+  "description": "图标库",
+  "keywords": [
+    "icons",
+    "svg"
+  ],
+  "license": "ISC",
+  "main": "src/index.js",
+  "scripts": {
+    "gen": "cui-cli gen:icons"
+  },
+  "devDependencies": {
+    "@cui/cli": "workspace:^0.1.0"
+  },
+  "authors": [
+    "cyanglin2014@gmail.com"
+  ]
+}

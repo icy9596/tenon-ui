@@ -1,22 +1,8 @@
 ---
 hero:
-  title: library
-  description: React组件库
+  title: CUI
+  description: 企业级前端开发框架
   actions:
-    - text: Hello
-      link: /
-    - text: World
-      link: /
-features:
-  - title: Hello
-    emoji: 💎
-    description: Put hello description here
-  - title: World
-    emoji: 🌈
-    description: Put world description here
-  - title: '!'
-    emoji: 🚀
-    description: Put ! description here
+    - text: 快速上手
+      link: /base/quick
 ---
-
-c-ui

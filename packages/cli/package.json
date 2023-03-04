@@ -1,0 +1,26 @@
+{
+  "name": "@cui/cli",
+  "version": "0.1.0",
+  "description": "命令行工具",
+  "keywords": [],
+  "license": "ISC",
+  "main": "src/index.js",
+  "bin": {
+    "cui-cli": "bin/cli.js"
+  },
+  "dependencies": {
+    "clear": "^0.1.0",
+    "figlet": "^1.5.2"
+  },
+  "devDependencies": {
+    "@babel/generator": "^7.21.1",
+    "@babel/parser": "^7.21.2",
+    "@babel/template": "^7.20.7",
+    "@babel/traverse": "^7.21.2",
+    "chalk": "4",
+    "commander": "^10.0.0"
+  },
+  "authors": [
+    "cyanglin2014@gmail.com"
+  ]
+}
