@@ -2,13 +2,13 @@ import classnames from 'classnames';
 
 import './button.less';
 
-type BtnType = 'primary' | 'default';
+export type ButtonnType = 'primary' | 'default';
 
-interface BaseButtonProps {
-  type?: BtnType;
+export interface ButtonProps {
+  type?: ButtonnType;
 }
 
-const Button = ({ type = 'default' }: BaseButtonProps): JSX.Element => {
+const Button = ({ type = 'default' }: ButtonProps): JSX.Element => {
   const className = classnames(
     'btn',
     type === 'default' ? 'btn-default' : 'btn-primary',
