@@ -10,6 +10,6 @@
     "new": "cui-cli create:component"
   },
   "devDependencies": {
-    "@cui/cli": "workspace:^0.0.1"
+    "@cui/cli": "workspace:*"
   }
 }

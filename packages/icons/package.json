@@ -12,7 +12,7 @@
     "gen": "cui-cli gen:icons"
   },
   "devDependencies": {
-    "@cui/cli": "workspace:^0.1.0"
+    "@cui/cli": "workspace:*"
   },
   "authors": [
     "cyanglin2014@gmail.com"
