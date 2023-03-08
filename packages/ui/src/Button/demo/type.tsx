@@ -7,8 +7,8 @@ import { Button } from 'c-ui';
 export default () => {
   return (
     <div>
-      <Button />
-      <Button type="primary" />
+      <Button>普通按钮</Button>
+      <Button>普通按钮</Button>
     </div>
   );
 };
