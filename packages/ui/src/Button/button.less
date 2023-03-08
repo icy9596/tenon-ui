@@ -4,13 +4,24 @@
   border: 1px solid transparent;
   padding: 4px 10px;
   background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.5s, background-color 0.5s;
 
   &-default {
-    border-color: green;
+    border-color: #ccc;
+
+    &:hover {
+      border-color: green;
+    }
   }
 
   &-primary {
     background-color: green;
     color: white;
+
+    &:hover {
+      background-color: #52c41a;
+    }
   }
 }

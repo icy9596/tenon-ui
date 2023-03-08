@@ -15,6 +15,4 @@ export default defineConfig({
     'c-ui': require.resolve('./packages/ui/src'),
     '@cui/icons': require.resolve('./packages/icons/src'),
   },
-  publicPath: './',
-  runtimePublicPath: {},
 });
