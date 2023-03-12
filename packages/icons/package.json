@@ -7,7 +7,9 @@
     "svg"
   ],
   "license": "ISC",
-  "main": "src/index.js",
+  "main": "lib/index.js",
+  "unpkg": "dist/index.min.js",
+  "module": "es/index.js",
   "scripts": {
     "gen": "cui-cli gen:icons"
   },

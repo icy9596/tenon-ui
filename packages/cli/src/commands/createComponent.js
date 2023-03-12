@@ -37,6 +37,7 @@ function updateEntry(comName) {
   const oldCode = readFile(COMPONENTS_ENTRY);
   const ast = parse(oldCode, {
     sourceType: 'module',
+    plugins: ['typescript'],
   });
 
   // code transform

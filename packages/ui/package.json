@@ -5,7 +5,15 @@
   "keywords": [],
   "license": "ISC",
   "author": "",
-  "main": "src/index.ts",
+  "main": "lib/index.js",
+  "unpkg": "dist/index.min.js",
+  "module": "es/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "dist",
+    "lib",
+    "es"
+  ],
   "scripts": {
     "new": "cui-cli create:component"
   },
