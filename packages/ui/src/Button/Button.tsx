@@ -2,10 +2,10 @@ import classnames from 'classnames';
 
 import './button.less';
 
-export type ButtonnType = 'primary' | 'default';
+export type ButtonType = 'primary' | 'default';
 
 export interface ButtonProps {
-  type?: ButtonnType;
+  type?: ButtonType;
   onClick?: () => void;
   children: string;
 }
