@@ -3,6 +3,7 @@
 [![NPM version](https://img.shields.io/npm/v/c-ui.svg?style=flat)](https://npmjs.org/package/c-ui)
 [![NPM downloads](http://img.shields.io/npm/dm/c-ui.svg?style=flat)](https://npmjs.org/package/c-ui)
 ![CI status](https://github.com/icy9596/c-ui/actions/workflows/ci.yml/badge.svg)
+[![codecov](https://codecov.io/gh/icy9596/c-ui/branch/main/graph/badge.svg?token=MMGT8TNGTF)](https://codecov.io/gh/icy9596/c-ui)
 
 
 React 组件库 ndefined
