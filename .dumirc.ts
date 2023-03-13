@@ -2,7 +2,7 @@ import { defineConfig } from 'dumi';
 
 export default defineConfig({
   outputPath: 'docs-dist',
-  publicPath: '/c-ui',
+  publicPath: '/c-ui/',
   themeConfig: {
     name: 'c-ui',
   },
