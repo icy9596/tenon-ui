@@ -4203,7 +4203,7 @@ packages:
     dev: true
 
   /clear/0.1.0:
-    resolution: {integrity: sha512-qMjRnoL+JDPJHeLePZJuao6+8orzHMGP04A8CdwCNsKhRbOnKRjefxONR7bwILT3MHecxKBjHkKL/tkZ8r4Uzw==, registry: https://registry.npm.taobao.org/}
+    resolution: {integrity: sha512-qMjRnoL+JDPJHeLePZJuao6+8orzHMGP04A8CdwCNsKhRbOnKRjefxONR7bwILT3MHecxKBjHkKL/tkZ8r4Uzw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/clear/-/clear-0.1.0.tgz}
     dev: false
 
   /cli-boxes/1.0.0:
@@ -4384,7 +4384,7 @@ packages:
     dev: true
 
   /commander/10.0.0:
-    resolution: {integrity: sha512-zS5PnTI22FIRM6ylNW8G4Ap0IEOyk62fhLSD0+uHRT9McRCLGpkVNvao4bjimpK/GShynyQkFFxHhwMcETmduA==, registry: https://registry.npm.taobao.org/}
+    resolution: {integrity: sha512-zS5PnTI22FIRM6ylNW8G4Ap0IEOyk62fhLSD0+uHRT9McRCLGpkVNvao4bjimpK/GShynyQkFFxHhwMcETmduA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/commander/-/commander-10.0.0.tgz}
     engines: {node: '>=14'}
     dev: true
 
@@ -6020,7 +6020,7 @@ packages:
     dev: true
 
   /figlet/1.5.2:
-    resolution: {integrity: sha512-WOn21V8AhyE1QqVfPIVxe3tupJacq1xGkPTB4iagT6o+P2cAgEOOwIxMftr4+ZCTI6d551ij9j61DFr0nsP2uQ==, registry: https://registry.npm.taobao.org/}
+    resolution: {integrity: sha512-WOn21V8AhyE1QqVfPIVxe3tupJacq1xGkPTB4iagT6o+P2cAgEOOwIxMftr4+ZCTI6d551ij9j61DFr0nsP2uQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/figlet/-/figlet-1.5.2.tgz}
     engines: {node: '>= 0.4.0'}
     dev: false
 

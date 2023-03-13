@@ -16,6 +16,12 @@
   "devDependencies": {
     "@cui/cli": "workspace:*"
   },
+  "peerDependencies": {
+    "classnames": "^2.3.2",
+    "lodash": "^4.17.21",
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
   "authors": [
     "cyanglin2014@gmail.com"
   ]
