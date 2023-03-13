@@ -3,11 +3,6 @@
   "private": true,
   "description": "React组件库",
   "license": "MIT",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "pnpm build:icons && pnpm build:components",
     "build:components": "cross-env BUILD_TYPE=components father build",
