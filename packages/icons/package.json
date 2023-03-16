@@ -11,6 +11,7 @@
   "unpkg": "dist/index.min.js",
   "module": "es/index.js",
   "scripts": {
+    "build": "father build",
     "gen": "cui-cli gen:icons"
   },
   "devDependencies": {

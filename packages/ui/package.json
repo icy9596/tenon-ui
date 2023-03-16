@@ -15,6 +15,7 @@
     "es"
   ],
   "scripts": {
+    "build": "father build",
     "new": "cui-cli create:component"
   },
   "devDependencies": {
