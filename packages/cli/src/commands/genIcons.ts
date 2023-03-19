@@ -10,8 +10,6 @@ import {
 } from '../utils/constants';
 import { cleanDirFiles, errorLog, log, successLog } from '../utils/helper';
 
-console.log('log');
-
 interface IconInfo {
   iconFileName: string;
   iconName: string;
