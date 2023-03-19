@@ -65,11 +65,11 @@ async function confirmRefs(remote = 'origin') {
 
     const flag = result[name];
     if (!flag) {
-      return Promise.reject(new Error('中止提交'));
+      return Promise.reject(new Error('中止提交Git'));
     }
+  } else {
+    return Promise.reject(new Error('git remote获取失败'));
   }
-
-  return Promise.reject(new Error('git remote获取失败'));
 }
 
 async function buildPackages() {
