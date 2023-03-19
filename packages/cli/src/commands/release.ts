@@ -6,13 +6,14 @@ import { exec as originExec } from 'node:child_process';
 import util from 'node:util';
 import path from 'path';
 import semver from 'semver';
-import { dfd } from '../utils/helper';
+import { simpleGit } from 'simple-git';
+import { dfd, getVersion } from '../utils/helper';
 
 const exec = util.promisify(originExec);
+const git = simpleGit();
 
 import {
   createSpinner,
-  getVersion,
   readJsonFile,
   successLog,
   writeJsonToFile,
@@ -47,26 +48,26 @@ async function confirmVersion(version: string) {
 }
 
 async function confirmRefs(remote = 'origin') {
-  const { stdout } = await exec('git remote -v');
-  const reg = new RegExp(`^${remote}\\t(.+)\\s\\(push\\)$`);
-  const [pushRemote] = stdout.split('\n').filter((str) => reg.test(str));
   const name = 'confirm refs';
-  if (pushRemote) {
-    const [, repo] = reg.exec(pushRemote)!;
-    const { stdout: branch } = await exec('git branch --show-current');
+  const [ref] = await git.getRemotes(true);
 
-    const result = await inquirer.prompt([
-      {
-        type: 'confirm',
-        name,
-        message: `请确认当前git信息 repo=${repo} branch=${branch}`,
-      },
-    ]);
-
-    return result[name];
+  if (ref.name !== remote) {
+    return Promise.reject('获取 Git Remote 异常');
   }
 
-  return Promise.reject(new Error('git remote获取失败'));
+  const {
+    refs: { push },
+  } = ref;
+  const { current: branch } = await git.branchLocal();
+  const result = await inquirer.prompt([
+    {
+      type: 'confirm',
+      name,
+      message: `请确认当前 Git 信息 repo=${push} branch=${branch}`,
+    },
+  ]);
+
+  return result[name];
 }
 
 async function buildPackages() {
@@ -110,7 +111,7 @@ async function generateChangeLog(filename: string = 'CHANGELOG.md') {
     .on('close', () => {
       resolve();
       spinner.stop();
-      successLog('完成changelog生成');
+      successLog('完成 changelog 生成');
     });
   return promise;
 }
@@ -118,16 +119,23 @@ async function generateChangeLog(filename: string = 'CHANGELOG.md') {
 async function pushGit(nextVersion: string) {
   let spinner;
   try {
-    const { stdout } = await exec('git status');
-    console.log(stdout);
+    const { modified } = await git.status();
+    console.log(`Modified files:\n${modified
+      .map((fileId) => `\tmodified:\t${fileId}`)
+      .join('\n')}
+    `);
 
-    await exec('git add .');
-    await exec(`git commit -m 'docs: changelog for ${nextVersion}'`);
+    const { latest: latestCommit } = await git.log();
+
+    await git.add('.');
+    await git.commit(`docs: changelog for ${nextVersion}`);
 
     const flag = await confirmRefs();
     if (!flag) {
-      await exec('git reset');
-      return Promise.reject(new Error('中止Git推送'));
+      if (latestCommit) {
+        git.reset({ [latestCommit.hash]: null });
+      }
+      return Promise.reject(new Error('中止 Git 推送'));
     }
 
     await exec(`git tag ${nextVersion}`);
@@ -137,7 +145,7 @@ async function pushGit(nextVersion: string) {
     });
     await exec(`git push origin ${nextVersion}`);
     await exec('git push origin');
-    successLog('完成Git工作流处理');
+    successLog('完成 Git 工作流处理');
   } finally {
     spinner?.stop();
   }

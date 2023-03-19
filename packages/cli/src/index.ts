@@ -11,7 +11,7 @@ const program = new Command();
 // 初始化
 clear();
 console.log(
-  figlet.textSync('C - UI!', {
+  figlet.textSync('TENON - UI', {
     horizontalLayout: 'default',
     verticalLayout: 'default',
     width: 80,
