@@ -3,6 +3,7 @@ import { defineConfig } from 'dumi';
 export default defineConfig({
   outputPath: 'docs-dist',
   publicPath: '/tenon-ui/',
+  base: '/tenon-ui/',
   themeConfig: {
     name: 'tenon-ui',
   },
