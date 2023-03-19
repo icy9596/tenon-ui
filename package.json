@@ -2,6 +2,7 @@
   "version": "0.0.5",
   "private": true,
   "description": "React组件库",
+  "homepage": "https://icy9596.github.io/tenon-ui",
   "repository": {
     "type": "git",
     "url": "https://github.com/icy9596/tenon-ui"
