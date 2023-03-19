@@ -122,8 +122,8 @@ async function pushGit(nextVersion: string) {
     await exec('git add .');
     await exec(`git commit -m 'docs: changelog for ${nextVersion}'`);
     await exec(`git tag ${nextVersion}`);
-    await exec(`git push ${nextVersion}`);
-    await exec('git push origin');
+    await exec(`git push origin ${nextVersion}`);
+    await exec('git push');
     successLog('完成Git工作流处理');
   } finally {
     spinner.stop();
