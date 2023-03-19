@@ -65,11 +65,11 @@ async function confirmRefs(remote = 'origin') {
 
     const flag = result[name];
     if (!flag) {
-      return Promise.reject(new Error('中止提交Git'));
+      return Promise.reject(new Error('中止提交'));
     }
-  } else {
-    return Promise.reject(new Error('git remote获取失败'));
   }
+
+  return Promise.reject(new Error('git remote获取失败'));
 }
 
 async function buildPackages() {
@@ -112,8 +112,8 @@ async function generateChangeLog(filename: string = 'CHANGELOG.md') {
     .pipe(writable)
     .on('close', () => {
       resolve();
-      successLog('完成changelog生成');
       spinner.stop();
+      successLog('完成changelog生成');
     });
   return promise;
 }
@@ -133,7 +133,7 @@ async function pushGit(nextVersion: string) {
     await confirmRefs();
     await exec(`git tag ${nextVersion}`);
     await exec(`git push origin ${nextVersion}`);
-    await exec('git push');
+    await exec('git push origin');
     successLog('完成Git工作流处理');
   } finally {
     spinner.stop();
