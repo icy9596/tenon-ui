@@ -1,3 +1,17 @@
+## [0.0.5](https://github.com/icy9596/tenon-ui/compare/0.0.4...0.0.5) (2023-03-19)
+
+### Bug Fixes
+
+- 调整 cli 发布逻辑 ([53c4ca8](https://github.com/icy9596/tenon-ui/commit/53c4ca8a1f9adeb7d55d18387f1695d2cd557ffa))
+- 调整 cli 发布逻辑 ([593c627](https://github.com/icy9596/tenon-ui/commit/593c62774d8b3de2049796d39ea043a8119244d5))
+- test changelog ([d3d40ff](https://github.com/icy9596/tenon-ui/commit/d3d40ff9a921c13c738da071e561fdf9e8ebbcc8))
+- test changelog ([13ef2fd](https://github.com/icy9596/tenon-ui/commit/13ef2fde76e40ee8bacf548327defa9059612915))
+
+### Features
+
+- cli 发布命令推送 git 逻辑调整 ([4df2751](https://github.com/icy9596/tenon-ui/commit/4df27514a53d81f77febfe39e81a999006832164))
+- pushgit 中断时，撤销文件修改 ([0d2c0c8](https://github.com/icy9596/tenon-ui/commit/0d2c0c8bc04aa58b40ced36e04765ac0ac5840c8))
+
 ## [0.0.4](https://github.com/icy9596/tenon-ui/compare/0.0.3...0.0.4) (2023-03-19)
 
 ## [0.0.3](https://github.com/icy9596/tenon-ui/compare/0.0.2...0.0.3) (2023-03-19)
