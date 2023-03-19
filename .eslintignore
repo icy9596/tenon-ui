@@ -1,9 +1,11 @@
 packages/icons/svg/*.svg
 packages/icons/src/icons/*
 
-packages/ui/dist
-packages/ui/es
-packages/ui/lib
+packages/cli/lib
+
+packages/components/dist
+packages/components/es
+packages/components/lib
 
 packages/icons/dist
 packages/icons/es

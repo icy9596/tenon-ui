@@ -5,8 +5,7 @@ export interface TagProps {
 }
 
 const Tag = ({ children }: TagProps): JSX.Element => {
-  console.log('test ci');
-  return <span className="cui-tag">{children}</span>;
+  return <span className="tenon-tag">{children}</span>;
 };
 
 export default Tag;

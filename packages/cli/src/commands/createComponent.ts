@@ -1,39 +1,20 @@
-const { existsSync, mkdirSync, writeFileSync } = require('fs');
-const { parse } = require('@babel/parser');
-const traverse = require('@babel/traverse').default;
-const template = require('@babel/template').default;
-const generate = require('@babel/generator').default;
-const { join } = require('path');
+import generate from '@babel/generator';
+import { parse } from '@babel/parser';
+import template from '@babel/template';
+import traverse, { type TraverseOptions } from '@babel/traverse';
+import { existsSync, mkdirSync, writeFileSync } from 'fs';
+import { join } from 'path';
 
-const {
-  readFile,
-  writeFile,
-  successLog,
+import { COMPONENTS_DIR, COMPONENTS_ENTRY } from '../utils/constants';
+import {
   errorLog,
   getComTemplate,
-} = require('../utils/helper');
-const { COMPONENTS_DIR, COMPONENTS_ENTRY } = require('../utils/constants');
+  readFile,
+  successLog,
+  writeFile,
+} from '../utils/helper';
 
-function createComponent(comName) {
-  const exist = existsSync(join(COMPONENTS_DIR, comName));
-  if (!exist) {
-    createComponentImpl(comName);
-    successLog('组件模板创建成功！');
-  } else {
-    errorLog('组件目录已存在，创建失败！');
-  }
-}
-
-/**
- * 自动创建组件目录，并更新入口
- * @param {*} name 组件名称
- */
-function createComponentImpl(comName) {
-  updateEntry(comName);
-  genComponent(comName);
-}
-
-function updateEntry(comName) {
+function updateEntry(comName: string) {
   const oldCode = readFile(COMPONENTS_ENTRY);
   const ast = parse(oldCode, {
     sourceType: 'module',
@@ -41,13 +22,15 @@ function updateEntry(comName) {
   });
 
   // code transform
-  const vistor = {
+  const vistor: TraverseOptions = {
     Program(path) {
       const { body } = path.node;
       const newExport = template.ast(`
                 export { default as ${comName} } from './${comName}'; 
             `);
-      body.push(newExport);
+      if (!Array.isArray(newExport)) {
+        body.push(newExport);
+      }
     },
   };
   traverse(ast, vistor);
@@ -58,7 +41,7 @@ function updateEntry(comName) {
   writeFile(COMPONENTS_ENTRY, newCode);
 }
 
-const getComPaths = (comName) => {
+const getComPaths = (comName: string) => {
   const lowCaseComName = comName.toLowerCase();
 
   const dir = join(COMPONENTS_DIR, comName);
@@ -78,7 +61,7 @@ const getComPaths = (comName) => {
   };
 };
 
-function genComponent(comName) {
+function genComponent(comName: string) {
   const comPaths = getComPaths(comName);
   // 1.创建目录
   mkdirSync(comPaths.dir);
@@ -94,4 +77,23 @@ function genComponent(comName) {
   writeFileSync(comPaths.entry, getComTemplate(comName, 'entry'));
 }
 
-module.exports = createComponent;
+/**
+ * 自动创建组件目录，并更新入口
+ * @param {*} name 组件名称
+ */
+function createComponentImpl(comName: string) {
+  updateEntry(comName);
+  genComponent(comName);
+}
+
+function createComponent(comName: string) {
+  const exist = existsSync(join(COMPONENTS_DIR, comName));
+  if (!exist) {
+    createComponentImpl(comName);
+    successLog('组件模板创建成功！');
+  } else {
+    errorLog('组件目录已存在，创建失败！');
+  }
+}
+
+export default createComponent;

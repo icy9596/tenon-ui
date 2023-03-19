@@ -1,8 +1,12 @@
-const { program } = require('commander');
-const genIcons = require('./commands/genIcons');
-const createComponent = require('./commands/createComponent');
-const clear = require('clear');
-const figlet = require('figlet');
+import clear from 'clear';
+import { Command } from 'commander';
+import figlet from 'figlet';
+
+import createComponent from './commands/createComponent';
+import genIcons from './commands/genIcons';
+import release from './commands/release';
+
+const program = new Command();
 
 // 初始化
 clear();
@@ -24,6 +28,11 @@ program
   .command('create:component')
   .description('自动创建组件相关文件')
   .argument('<name>', '组件名称')
-  .action((name) => createComponent(name));
+  .action((name: string) => createComponent(name));
+
+program
+  .command('release')
+  .description('发布')
+  .action(() => release());
 
 program.parse();

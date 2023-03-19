@@ -1,6 +1,6 @@
 {
-  "name": "@cui/icons",
-  "version": "0.1.0",
+  "name": "@tenon-ui/icons",
+  "version": "0.0.4",
   "description": "图标库",
   "keywords": [
     "icons",
@@ -10,18 +10,27 @@
   "main": "lib/index.js",
   "unpkg": "dist/index.min.js",
   "module": "es/index.js",
+  "files": [
+    "dist",
+    "es",
+    "lib"
+  ],
   "scripts": {
     "build": "father build",
-    "gen": "cui-cli gen:icons"
+    "gen": "tenon-cli gen:icons"
   },
   "devDependencies": {
-    "@cui/cli": "workspace:*"
+    "@tenon-ui/cli": "workspace:*"
   },
   "peerDependencies": {
     "classnames": "^2.3.2",
     "lodash": "^4.17.21",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   },
   "authors": [
     "cyanglin2014@gmail.com"
