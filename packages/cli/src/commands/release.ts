@@ -108,6 +108,7 @@ async function generateChangeLog(filename: string = 'CHANGELOG.md') {
     .pipe(writable)
     .on('close', () => {
       resolve();
+      successLog('完成changelog生成');
       spinner.stop();
     });
   return promise;
