@@ -63,10 +63,7 @@ async function confirmRefs(remote = 'origin') {
       },
     ]);
 
-    const flag = result[name];
-    if (!flag) {
-      return Promise.reject(new Error('中止提交'));
-    }
+    return result[name];
   }
 
   return Promise.reject(new Error('git remote获取失败'));
@@ -119,24 +116,30 @@ async function generateChangeLog(filename: string = 'CHANGELOG.md') {
 }
 
 async function pushGit(nextVersion: string) {
-  const spinner = createSpinner('git add/commit/tag/push ...', {
-    color: 'blue',
-  });
+  let spinner;
   try {
-    const { stdout: log1 } = await exec('git status');
-    console.log(log1);
+    const { stdout } = await exec('git status');
+    console.log(stdout);
+
     await exec('git add .');
-    const { stdout: log2 } = await exec(
-      `git commit -m 'docs: changelog for ${nextVersion}'`,
-    );
-    console.log(log2);
-    await confirmRefs();
+    await exec(`git commit -m 'docs: changelog for ${nextVersion}'`);
+
+    const flag = await confirmRefs();
+    if (!flag) {
+      await exec('git reset');
+      return Promise.reject(new Error('中止Git推送'));
+    }
+
     await exec(`git tag ${nextVersion}`);
+
+    spinner = createSpinner('Git Push ...', {
+      color: 'blue',
+    });
     await exec(`git push origin ${nextVersion}`);
     await exec('git push origin');
     successLog('完成Git工作流处理');
   } finally {
-    spinner.stop();
+    spinner?.stop();
   }
 }
 
