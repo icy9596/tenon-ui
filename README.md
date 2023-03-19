@@ -2,8 +2,8 @@
 
 [![NPM version](https://img.shields.io/npm/v/test1-ui.svg?style=flat)](https://npmjs.org/package/test1-ui)
 [![NPM downloads](http://img.shields.io/npm/dm/test1-ui.svg?style=flat)](https://npmjs.org/package/test1-ui)
-![CI status](https://github.com/icy9596/test1-ui/actions/workflows/ci.yml/badge.svg)
-[![codecov](https://codecov.io/gh/icy9596/test1-ui/branch/main/graph/badge.svg?token=MMGT8TNGTF)](https://codecov.io/gh/icy9596/test1-ui)
+![CI status](https://github.com/icy9596/tenon-ui/actions/workflows/ci.yml/badge.svg)
+[![codecov](https://codecov.io/gh/icy9596/tenon-ui/branch/main/graph/badge.svg?token=0LHMLN38H7)](https://codecov.io/gh/icy9596/tenon-ui)
 
 React 组件库
 
