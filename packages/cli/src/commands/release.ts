@@ -125,18 +125,14 @@ async function pushGit(nextVersion: string) {
       .join('\n')}
     `);
 
-    const { latest: latestCommit } = await git.log();
+    const flag = await confirmRefs();
+    if (!flag) {
+      await git.checkout('.');
+      return Promise.reject(new Error('中止 Git 推送'));
+    }
 
     await git.add('.');
     await git.commit(`docs: changelog for ${nextVersion}`);
-
-    const flag = await confirmRefs();
-    if (!flag) {
-      if (latestCommit) {
-        git.reset({ [latestCommit.hash]: null });
-      }
-      return Promise.reject(new Error('中止 Git 推送'));
-    }
 
     await exec(`git tag ${nextVersion}`);
 
