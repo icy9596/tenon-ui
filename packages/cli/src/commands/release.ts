@@ -119,12 +119,14 @@ async function generateChangeLog(filename: string = 'CHANGELOG.md') {
 async function pushGit(nextVersion: string) {
   let spinner;
   try {
+    // log更新的文件 可查看修改内容
     const { modified } = await git.status();
     console.log(`Modified files:\n${modified
       .map((fileId) => `\tmodified:\t${fileId}`)
       .join('\n')}
     `);
 
+    // 确认仓库和分支
     const flag = await confirmRefs();
     if (!flag) {
       await git.checkout('.');
@@ -133,14 +135,12 @@ async function pushGit(nextVersion: string) {
 
     await git.add('.');
     await git.commit(`docs: changelog for ${nextVersion}`);
-
-    await exec(`git tag ${nextVersion}`);
-
+    await git.addTag(nextVersion);
     spinner = createSpinner('Git Push ...', {
       color: 'blue',
     });
-    await exec(`git push origin ${nextVersion}`);
-    await exec('git push origin');
+    await git.push('origin', nextVersion);
+    await git.push('origin');
     successLog('完成 Git 工作流处理');
   } finally {
     spinner?.stop();
