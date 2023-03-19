@@ -1,28 +1,27 @@
-const { readdirSync, readFileSync, writeFileSync, rmSync } = require('fs');
-const { resolve, basename } = require('path');
-const { template, capitalize } = require('lodash');
+import chalk from 'chalk';
+import { readdirSync, readFileSync, writeFileSync } from 'fs';
+import { capitalize, template } from 'lodash';
+import { basename, resolve } from 'path';
 
-const {
-  ICONS_SVG_DIR,
-  ICONS_SOURCE_DIR,
+import {
   ICONS_COMPONENTS_DIR,
   ICONS_ENTRY,
-} = require('../utils/constants');
-const { log, successLog, errorLog, cleanDirFiles } = require('../utils/helper');
-const chalk = require('chalk');
+  ICONS_SVG_DIR,
+} from '../utils/constants';
+import { cleanDirFiles, errorLog, log, successLog } from '../utils/helper';
 
-function genIcons() {
-  try {
-    genIconsImpl();
-    successLog('Icons生成完毕！');
-  } catch (e) {
-    errorLog('Icons生成失败！');
-    console.error(e);
-  }
+interface IconInfo {
+  iconFileName: string;
+  iconName: string;
+  svgIconName: string;
+  svgIconFileName: string;
 }
+type IconsInfo = {
+  [key: string]: IconInfo;
+};
 
-function getIconsInfo(icons) {
-  return icons.reduce((memo, icon) => {
+function getIconsInfo(icons: string[]) {
+  return icons.reduce<IconsInfo>((memo, icon) => {
     const iconName = basename(icon, '.svg');
     const svgIconName = capitalize(iconName);
     const svgIconFileName = `${svgIconName}.tsx`;
@@ -37,15 +36,6 @@ function getIconsInfo(icons) {
   }, {});
 }
 
-function genIconsImpl() {
-  cleanDirFiles(ICONS_COMPONENTS_DIR);
-
-  const icons = readdirSync(ICONS_SVG_DIR);
-  const iconsInfo = getIconsInfo(icons);
-  genIconComponents(iconsInfo);
-  genIconEnties(iconsInfo);
-}
-
 const svgIconTpl = `import Icon from '../components/Icon';
 
 const <%= svgIconName %> = (): JSX.Element => {
@@ -58,7 +48,7 @@ const <%= svgIconName %> = (): JSX.Element => {
 
 export default <%= svgIconName %>;`;
 
-function genIconComponents(iconsInfo) {
+function genIconComponents(iconsInfo: IconsInfo) {
   Object.keys(iconsInfo).forEach((icon) => {
     const { iconFileName, svgIconName, svgIconFileName } = iconsInfo[icon];
     // 1.遍历文件，拿到文件内容
@@ -74,8 +64,8 @@ function genIconComponents(iconsInfo) {
   });
 }
 
-function genIconEnties(iconsInfo) {
-  const getExportCode = (comName) =>
+function genIconEnties(iconsInfo: IconsInfo) {
+  const getExportCode = (comName: string) =>
     `export { default as ${comName} } from './icons/${comName}'`;
   const enties = Object.keys(iconsInfo)
     .map((icon) => {
@@ -86,4 +76,23 @@ function genIconEnties(iconsInfo) {
   writeFileSync(ICONS_ENTRY, enties);
 }
 
-module.exports = genIcons;
+function genIconsImpl() {
+  cleanDirFiles(ICONS_COMPONENTS_DIR);
+
+  const icons = readdirSync(ICONS_SVG_DIR);
+  const iconsInfo = getIconsInfo(icons);
+  genIconComponents(iconsInfo);
+  genIconEnties(iconsInfo);
+}
+
+function genIcons() {
+  try {
+    genIconsImpl();
+    successLog('Icons生成完毕！');
+  } catch (e) {
+    errorLog('Icons生成失败！');
+    console.error(e);
+  }
+}
+
+export default genIcons;

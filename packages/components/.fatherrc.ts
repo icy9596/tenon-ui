@@ -18,6 +18,6 @@ export default defineConfig({
     externals: {
       react: 'react',
     },
-    name: 'cui',
+    name: 'tenonUI',
   },
 });

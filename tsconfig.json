@@ -4,12 +4,15 @@
     "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "moduleResolution": "node",
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
-      "c-ui": ["packages/ui/src"]
-    }
+      "@tenon-ui/components": ["packages/components/src"],
+      "@tenon-ui/icons": ["packages/icons/src"]
+    },
+    "lib": ["esnext", "DOM"]
   },
   "include": [".dumi/**/*", ".dumirc.ts"]
 }

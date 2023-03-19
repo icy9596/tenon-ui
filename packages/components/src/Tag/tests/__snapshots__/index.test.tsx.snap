@@ -2,7 +2,7 @@
 
 exports[`Tag render 1`] = `
 <span
-  class="cui-tag"
+  class="tenon-tag"
 >
   test
 </span>

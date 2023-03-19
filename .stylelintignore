@@ -1,6 +1,6 @@
-packages/ui/dist
-packages/ui/es
-packages/ui/lib
+packages/components/dist
+packages/components/es
+packages/components/lib
 
 packages/icons/dist
 packages/icons/es

@@ -2,7 +2,7 @@
  * description: 按钮有大、中、小三种尺寸。
  */
 
-import { Button } from 'c-ui';
+import { Button } from '@tenon-ui/components';
 
 export default () => {
   return (
