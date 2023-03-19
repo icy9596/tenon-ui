@@ -40,7 +40,7 @@ async function confirmVersion(version: string) {
       choices: RELEASE_TYPE.map((type: string) => ({
         name: `${type} - ${typeToVersion[type]}`,
         value: typeToVersion[type],
-      })).concat([{ name: 'reset', value: '0.0.1' }]),
+      })),
     },
   ]);
   return releaseType;
@@ -63,7 +63,10 @@ async function confirmRefs(remote = 'origin') {
       },
     ]);
 
-    return result[name];
+    const flag = result[name];
+    if (!flag) {
+      return Promise.reject(new Error('中止提交'));
+    }
   }
 
   return Promise.reject(new Error('git remote获取失败'));
@@ -104,6 +107,7 @@ async function generateChangeLog(filename: string = 'CHANGELOG.md') {
   // 可读流 可监听close事件 在读取完毕时
   conventionalChangelog({
     preset: 'angular',
+    releaseCount: 0,
   })
     .pipe(writable)
     .on('close', () => {
@@ -119,8 +123,14 @@ async function pushGit(nextVersion: string) {
     color: 'blue',
   });
   try {
+    const { stdout: log1 } = await exec('git status');
+    console.log(log1);
     await exec('git add .');
-    await exec(`git commit -m 'docs: changelog for ${nextVersion}'`);
+    const { stdout: log2 } = await exec(
+      `git commit -m 'docs: changelog for ${nextVersion}'`,
+    );
+    console.log(log2);
+    await confirmRefs();
     await exec(`git tag ${nextVersion}`);
     await exec(`git push origin ${nextVersion}`);
     await exec('git push');
@@ -150,9 +160,6 @@ async function release() {
   try {
     const version = getVersion();
     const nextVersion = await confirmVersion(version);
-
-    const confirmRefsFlag = await confirmRefs();
-    if (!confirmRefsFlag) return;
 
     await buildPackages();
 
