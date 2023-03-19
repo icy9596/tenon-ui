@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "build": "father build",
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts release"
+    "dev": "father dev"
   },
   "devDependencies": {
     "@babel/generator": "^7.21.1",

@@ -5,5 +5,6 @@ export default defineConfig({
   cjs: {
     input: 'src',
     output: 'lib',
+    sourcemap: false,
   },
 });

@@ -4,6 +4,7 @@
   "compilerOptions": {
     "outDir": "lib",
     "target": "ESNext",
-    "module": "NodeNext"
+    "module": "NodeNext",
+    "declaration": false
   }
 }
