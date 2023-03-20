@@ -147,13 +147,13 @@ async function pushGit(nextVersion: string) {
   }
 }
 
-/* async function publish() {
+async function publish() {
   const spinner = createSpinner('发布各子包 ...', { color: 'blue' });
   try {
     const { stdout, stderr } = await exec('pnpm -r publish');
     if (stderr) {
       console.error(stderr);
-      return Promise.reject(new Error('发布失败'));
+      return Promise.reject(new Error('发布异常'));
     } else {
       console.log(stdout);
       successLog('完成发布');
@@ -161,7 +161,7 @@ async function pushGit(nextVersion: string) {
   } finally {
     spinner.stop();
   }
-} */
+}
 
 async function release() {
   try {
@@ -183,7 +183,7 @@ async function release() {
     await pushGit(nextVersion);
 
     // 6.npm publish
-    // await publish();
+    await publish();
   } catch (err) {
     console.error(err);
   }
