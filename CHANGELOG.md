@@ -1,3 +1,9 @@
+## [0.0.11](https://github.com/icy9596/tenon-ui/compare/0.0.10...0.0.11) (2023-03-20)
+
+### Bug Fixes
+
+- 修复 release 脚本 publish 判断异常错误 ([ad50702](https://github.com/icy9596/tenon-ui/commit/ad50702b907957ef39670cee2b3aeff76dcddc78))
+
 ## [0.0.10](https://github.com/icy9596/tenon-ui/compare/0.0.8...0.0.10) (2023-03-20)
 
 ## [0.0.8](https://github.com/icy9596/tenon-ui/compare/0.0.6...0.0.8) (2023-03-20)
