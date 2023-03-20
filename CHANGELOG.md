@@ -1,3 +1,5 @@
+## [0.0.10](https://github.com/icy9596/tenon-ui/compare/0.0.8...0.0.10) (2023-03-20)
+
 ## [0.0.8](https://github.com/icy9596/tenon-ui/compare/0.0.6...0.0.8) (2023-03-20)
 
 ### Features
