@@ -1,3 +1,9 @@
+## [0.0.7](https://github.com/icy9596/tenon-ui/compare/0.0.6...0.0.7) (2023-03-20)
+
+### Features
+
+- cli release 脚本增加 npm 发布流程 ([8726401](https://github.com/icy9596/tenon-ui/commit/872640194e7181ec1d7a22073ba03799796895c5))
+
 ## [0.0.6](https://github.com/icy9596/tenon-ui/compare/0.0.5...0.0.6) (2023-03-20)
 
 ### Bug Fixes
