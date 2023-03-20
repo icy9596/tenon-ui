@@ -150,14 +150,12 @@ async function pushGit(nextVersion: string) {
 async function publish() {
   const spinner = createSpinner('发布各子包 ...', { color: 'blue' });
   try {
-    const { stdout, stderr } = await exec('pnpm -r publish');
-    if (stderr) {
+    const { stderr } = await exec('pnpm -r publish');
+    if (stderr && stderr.includes('npm ERR!')) {
       console.error(stderr);
       return Promise.reject(new Error('发布异常'));
-    } else {
-      console.log(stdout);
-      successLog('完成发布');
     }
+    successLog('完成发布');
   } finally {
     spinner.stop();
   }
