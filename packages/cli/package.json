@@ -3,6 +3,10 @@
   "version": "0.0.5",
   "description": "命令行工具",
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/icy9596/tenon-ui"
+  },
   "license": "ISC",
   "bin": {
     "tenon-cli": "bin/cli.js"

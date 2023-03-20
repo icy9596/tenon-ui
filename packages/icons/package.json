@@ -6,6 +6,11 @@
     "icons",
     "svg"
   ],
+  "homepage": "https://icy9596.github.io/tenon-ui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/icy9596/tenon-ui"
+  },
   "license": "ISC",
   "main": "lib/index.js",
   "unpkg": "dist/index.min.js",
