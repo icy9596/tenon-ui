@@ -1,3 +1,14 @@
+## [0.0.6](https://github.com/icy9596/tenon-ui/compare/0.0.5...0.0.6) (2023-03-20)
+
+### Bug Fixes
+
+- 完善子包 package.json 仓库和首页字段 ([647721c](https://github.com/icy9596/tenon-ui/commit/647721c2297dcb6d5763c076d0c183b087bb37a9))
+- 修复部署到 gh-pages baseurl 不对问题 ([4864b14](https://github.com/icy9596/tenon-ui/commit/4864b140e59762e052d43baff6d616bd121a7dd5))
+
+### Features
+
+- 完善仓库 HomePage、ci、codeCov 徽章 ([00753be](https://github.com/icy9596/tenon-ui/commit/00753bea5e695cd080e8523deb531b038529d5b4))
+
 ## [0.0.5](https://github.com/icy9596/tenon-ui/compare/0.0.4...0.0.5) (2023-03-19)
 
 ### Bug Fixes
